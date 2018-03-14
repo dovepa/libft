@@ -1,0 +1,413 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    man                                                :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: dpalombo <dpalombo@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2017/11/25 22:54:32 by dpalombo          #+#    #+#              #
+#    Updated: 2017/11/26 11:49:36 by dpalombo         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+Descriptif de toute les fonctions de la lib :
+
+memset
+• bzero
+Écrire des octets de valeur zéro dans un bloc d'octets 
+
+• memcpy
+Copier une zone mémoire  
+
+• memccpy
+La fonction memccpy() copie au plus n octets de la zone mémoire src vers la zone
+mémoire dest, s'arrêtant dès qu'elle rencontre le caractère c.  
+
+• memmove
+mamcpy mais gere l'overlaps
+
+• memchr
+La fonction memchr() examine les n premiers octets de la zone mémoire pointée par s à la
+recherche du caractère c. Le premier octet correspondant à c (interprété comme un unsigned char) arrête l'opération.
+La fonction memrchr() travaille comme memchr(), sauf qu'elle recherche en
+arrière depuis la fin de la zone de n octets pointée par s plutôt que depuis le début. 
+
+• memcmp
+La fonction memcmp() compare les n premiers octets des zones mémoire s1 et s2. Elle renvoie un entier
+inférieur, égal, ou supérieur à zéro, si s1 est respectivement inférieure, égale ou supérieur à s2.  
+VALEUR RENVOYÉE
+La fonction memcmp() renvoie un entier négatif, nul ou positif si les n premiers octets de s1
+sont respectivement inférieurs, égaux ou supérieurs aux n premiers octets de s2.  
+
+• strlen
+Mesure une chaine de caractère avec le \0
+
+• strdup
+La fonction strdup() renvoie un pointeur sur une nouvelle chaîne de caractères qui est dupliquée depuis s.
+La mémoire occupée par cette nouvelle chaîne est obtenue en appelant malloc(3), et peut (doit) donc être libérée avec free(3).
+La fonction strndup() est identique, mais ne copie au plus que n caractères. Si s est plus grande que n,
+seuls n caractères sont copiés, et un octet nul (« \0 ») est ajouté.
+strdupa() et strndupa() sont similaires, mais utilisent alloca(3) pour allouer le tampon.
+Elles sont directement utilisables avec GNU gcc(1), mais souffrent des mêmes restrictions que alloca(3).  
+
+• strcpy
+• strncpy
+La fonction strcpy() copie la chaîne pointée par src (y compris l'octet nul « \0 » final)
+dans la chaîne pointée par dest. Les deux chaînes ne doivent pas se chevaucher. La chaîne dest doit
+être assez grande pour accueillir la copie.
+La fonction strncpy() est identique, sauf que seuls les n premiers octets de src sont copiés.
+Avertissement : s'il n'y a pas d'octet nul dans les n premiers octets de src, la chaîne résultante dans
+dest ne disposera pas d'octet nul final.
+Dans le cas où la longueur de src est inférieure à n, la fin de dest sera remplie avec des octets nuls.
+
+• strcat
+• strncat
+La fonction strcat() ajoute la chaîne src à la fin de la chaîne dest en écrasant
+le caractère nul (« \0 ») à la fin de dest, puis en ajoutant un nouveau caractère nul final.
+Les chaînes ne doivent pas se chevaucher, et la chaîne dest doit être assez grande pour accueillir le résultat.
+La fonction strncat() est identique, à la différence que
+*elle ne prend en compte que les n premiers caractères de src ; et
+*src n'a pas besoin d'octet nul final si elle contient n caractères ou plus.
+
+• strlcat
+The strlcpy() and strlcat() functions copy and concatenate strings
+respectively.  They are designed to be safer, more consistent, and less
+error prone replacements for strncpy(3) and strncat(3).  Unlike those
+functions, strlcpy() and strlcat() take the full size of the buffer (not
+just the length) and guarantee to NUL-terminate the result (as long as
+size is larger than 0 or, in the case of strlcat(), as long as there is
+at least one byte free in dst).  Note that you should include a byte for
+the NUL in size.  Also note that strlcpy() and strlcat() only operate on
+true ``C'' strings.  This means that for strlcpy() src must be NUL-termi-
+nated and for strlcat() both src and dst must be NUL-terminated.
+
+• strchr
+• strrchr
+La fonction strchr() renvoie un pointeur sur la première occurrence du caractère c dans la chaîne s.
+La fonction strrchr() renvoie un pointeur sur la dernière occurrence du caractère c dans la chaîne s.
+
+• strstr
+• strnstr
+La fonction strstr() cherche la première occurrence de la sous-chaîne aiguille au sein
+de la chaîne meule_de_foin. Les caractères « \0 » de fin ne sont pas comparés.
+La fonction strcasestr() est identique à strstr(), sauf qu'elle ignore la casse des deux arguments.  
+
+• strcmp
+• strncmp
+La fonction strcmp() compare les deux chaînes s1 et s2. Elle renvoie un entier négatif,
+nul, ou positif, si s1 est respectivement inférieure, égale ou supérieure à s2.
+La fonction strncmp() est identique sauf qu'elle ne compare que les n (au plus) premiers caractères de s1 et s2.  
+
+• atoi
+char to int
+
+• isalpha	   ||
+• isdigit	   ||
+• isalnum	   ||
+• isascii	   ||
+• isprint	   ||
+• toupper	   ||
+• tolower	   \/
+			gere les caracteres ascii
+
+• ft_memalloc
+Prototype void * ft_memalloc(size_t size);
+Description Alloue (avec malloc(3)) et retourne une zone de mémoire
+“fraiche”. La mémoire allouée est initialisée à 0. Si l’allocation
+échoue, la fonction renvoie NULL.
+Param. #1 La taille de la zone de mémoire à allouer.
+Retour La zone de mémoire allouée.
+Fonctions libc malloc(3)
+
+• ft_memdel
+Prototype void ft_memdel(void **ap);
+Description Prend en paramètre l’adresse d’un pointeur dont la zone pointée
+doit être libérée avec free(3), puis le pointeur est mis à NULL.
+Param. #1 L’adresse d’un pointeur dont il faut libérer la mémoire puis le
+mettre à NULL.
+Retour Rien.
+Fonctions libc free(3).
+
+• ft_strnew
+Prototype char * ft_strnew(size_t size);
+Description Alloue (avec malloc(3)) et retourne une chaine de caractère
+“fraiche” terminée par un ’\0’. Chaque caractère de la chaine
+est initialisé à ’\0’. Si l’allocation echoue, la fonction renvoie NULL.
+Param. #1 La taille de la chaine de caractères à allouer.
+Retour La chaine de caractères allouée et initialisée à 0.
+Fonctions libc malloc(3)
+
+• ft_strdel
+Prototype void ft_strdel(char **as);
+Description Prend en paramètre l’adresse d’une chaine de caractères qui
+doit être libérée avec free(3) et son pointeur mis à NULL.
+Param. #1 L’adresse de la chaine de caractère dont il faut libérer la mé-
+moire et mettre le pointeur à NULL.
+Retour Rien.
+Fonctions libc Free(3).
+
+• ft_strclr
+Prototype void ft_strclr(char *s);
+Description Assigne la valeur ’\0’ à tous les caractères de la chaine passée
+en paramètre.
+Param. #1 La chaine de caractères à clearer.
+Retour Rien.
+Fonctions libc Aucune.
+
+• ft_striter
+Prototype void ft_striter(char *s, void (*f)(char *));
+Description Applique la fonction f à chaque caractère de la chaine de
+caractères passée en paramètre. Chaque caractère est passé
+par adresse à la fonction f afin de pouvoir être modifié si
+nécéssaire.
+Param. #1 La chaine de caractères sur laquelle itérer.
+Param. #2 La fonction à appeler sur chaque caractère de s.
+Retour Rien.
+Fonctions libc Aucune.
+
+• ft_striteri
+Prototype void ft_striteri(char *s, void (*f)(unsigned int,
+char *));
+Description Applique la fonction f à chaque caractère de la chaine de
+caractères passée en paramètre en précisant son index en premier
+argument. Chaque caractère est passé par adresse à la
+fonction f afin de pouvoir être modifié si nécéssaire.
+Param. #1 La chaine de caractères sur laquelle itérer.
+Param. #2 La fonction à appeler sur chaque caractère de s et son index.
+Retour Rien.
+Fonctions libc Aucune.
+
+• ft_strmap
+Prototype char * ft_strmap(char const *s, char (*f)(char));
+Description Applique la fonction f à chaque caractère de la chaine de caractères
+passée en paramètre pour créer une nouvelle chaine
+“fraiche” (avec malloc(3)) résultant des applications successives
+de f.
+Param. #1 La chaine de caractères sur laquelle itérer.
+Param. #2 La fonction à appeler sur chaque caractère de s.
+Retour La chaine “fraiche” résultant des applications successives de f.
+
+• ft_strmapi
+Prototype char * ft_strmapi(char const *s, char
+(*f)(unsigned int, char));
+Description Applique la fonction f à chaque caractère de la chaine de
+caractères passée en paramètre en précisant son index pour
+créer une nouvelle chaine “fraiche” (avec malloc(3)) résultant
+des applications successives de f.
+Param. #1 La chaine de caractères sur laquelle itérer.
+Param. #2 La fonction à appeler sur chaque caractère de s en précisant son index.
+Retour La chaine “fraiche” résultant des applications successives de f.
+Fonctions libc malloc(3)
+
+• ft_strequ
+Prototype int ft_strequ(char const *s1, char const *s2);
+Description Compare lexicographiquement s1 et s2. Si les deux chaines
+sont égales, la fonction retourne 1, ou 0 sinon.
+Param. #1 La première des deux chaines à comparer.
+Param. #2 La seconde des deux chaines à comparer.
+Retour 1 ou 0 selon que les deux chaines sont égales ou non.
+Fonctions libc Aucune.
+
+• ft_strnequ
+Prototype int ft_strnequ(char const *s1, char const *s2,
+size_t n);
+Description Compare lexicographiquement s1 et s2 jusqu’à n caractères
+maximum ou bien qu’un ’\0’ ait été rencontré. Si les deux
+chaines sont égales, la fonction retourne 1, ou 0 sinon.
+Param. #1 La première des deux chaines à comparer.
+Param. #2 La seconde des deux chaines à comparer.
+Param. #3 Le nombre de caractères à comparer au maximum.
+Retour 1 ou 0 selon que les deux chaines sont égales ou non.
+Fonctions libc Aucune.
+
+• ft_strsub
+Prototype char * ft_strsub(char const *s, unsigned int
+start, sizet_t len);
+Description Alloue (avec malloc(3)) et retourne la copie “fraiche” d’un
+tronçon de la chaine de caractères passée en paramètre. Le
+tronçon commence à l’index start et à pour longueur len. Si
+start et len ne désignent pas un tronçon de chaine valide,
+le comportement est indéterminé. Si l’allocation échoue, la
+fonction renvoie NULL.
+Param. #1 La chaine de caractères dans laquelle chercher le tronçon à
+copier.
+Param. #2 L’index dans la chaine de caractères où débute le tronçon à
+copier.
+Param. #3 La longueur du tronçon à copier.
+Retour Le tronçon.
+Fonctions libc malloc(3)
+
+• ft_strjoin
+Prototype char * ft_strjoin(char const *s1, char const *s2);
+Description Alloue (avec malloc(3)) et retourne une chaine de caractères
+“fraiche” terminée par un ’\0’ résultant de la concaténation
+de s1 et s2. Si l’allocation echoue, la fonction renvoie NULL.
+Param. #1 La chaine de caractères préfixe.
+Param. #2 La chaine de caractères suffixe.
+Retour La chaine de caractère “fraiche” résultant de la concaténation
+des deux chaines.
+Fonctions libc malloc(3)
+
+• ft_strtrim
+Prototype char * ft_strjoin(char const *s);
+Description Alloue (avec malloc(3)) et retourne une copie de la chaine
+passée en paramètre sans les espaces blancs au debut et à la
+fin de cette chaine. On considère comme espaces blancs les
+caractères ’ ’, ’\n’ et ’\t’. Si s ne contient pas d’espaces
+blancs au début ou à la fin, la fonction renvoie une copie de
+s. Si l’allocation echoue, la fonction renvoie NULL.
+Param. #1 La chaine de caractères à trimmer.
+Retour La chaine de caractère “fraiche” trimmée ou bien s sinon.
+Fonctions libc malloc(3)
+
+• ft_strsplit
+Prototype char ** ft_strsplit(char const *s, char c);
+Description Alloue (avec malloc(3)) et retourne un tableau de chaines de
+caractères “fraiches” (toutes terminées par un ’\0’, le tableau
+également donc) résultant de la découpe de s selon le caractère
+c. Si l’allocation echoue, la fonction retourne NULL. Exemple :
+ft_strsplit("*salut*les***etudiants*", ’*’) renvoie
+le tableau ["salut", "les", "etudiants"].
+Param. #1 La chaine de caractères à découper.
+Param. #2 Le caractère selon lequel découper la chaine.
+Retour Le tableau de chaines de caractères “fraiches” résultant de la
+découpe.
+Fonctions libc malloc(3)
+
+• ft_itoa
+Prototype char * ft_itoa(int n);
+Description Alloue (avec malloc(3)) et retourne une chaine de caractères
+“fraiche” terminée par un ’\0’ représentant l’entier n passé
+en paramètre. Les nombres négatifs doivent être gérés. Si l’allocation
+échoue, la fonction renvoie NULL.
+Param. #1 L’entier à convertir en une chaine de caractères.
+Retour La chaine de caractères représentant l’entier passé en paramètre.
+Fonctions libc malloc(3)
+
+• ft_putchar
+Prototype void ft_putchar(char c);
+Description Affiche le caractère c sur la sortie standard.
+Param. #1 Le caractères à afficher.
+Retour Rien.
+Fonctions libc write(2).
+
+• ft_putstr
+Prototype void ft_putstr(char const *s);
+Description Affiche la chaine s sur la sortie standard.
+Param. #1 La chaine de caractères à afficher.
+Retour Rien.
+Fonctions libc write(2).
+
+• ft_putendl
+Prototype void ft_putendl(char const *s);
+Description Affiche la chaine s sur la sortie standard suivi d’un ’\n’.
+Param. #1 La chaine de caractères à afficher.
+Retour Rien.
+Fonctions libc write(2).
+
+• ft_putnbr
+Prototype void ft_putnbr(int n);
+Description Affiche l’entier n sur la sortie standard.
+Param. #1 L’entier à afficher.
+Retour Rien.
+Fonctions libc write(2).
+
+• ft_putchar_fd
+Prototype void ft_putchar_fd(char c, int fd);
+Description Ecrit le caractère c sur le descripteur de fichier fd.
+Param. #1 Le caractères à écrire.
+Retour Rien.
+Fonctions libc write(2).
+
+• ft_putstr_fd
+Prototype void ft_putstr_fd(char const *s, int fd);
+Description Ecrit la chaine s sur le descripteur de fichier fd.
+Param. #1 La chaine de caractères à écrire.
+Retour Rien.
+Fonctions libc write(2).
+
+• ft_putendl_fd
+Prototype void ft_putendl_fd(char const *s, int fd);
+Description Ecrit la chaine s sur le descripteur de fichier fd suivi d’un
+’\n’.
+Param. #1 La chaine de caractères à écrire.
+Retour Rien.
+Fonctions libc write(2).
+
+• ft_putnbr_fd
+Prototype void ft_putnbr_fd(int n, int fd);
+Description Ecrit l’entier n sur le descripteur de fichier fd.
+Param. #1 L’entier à écrire.
+Retour Rien.
+Fonctions libc write(2).
+
+• ft_lstnew
+Prototype t_list * ft_lstnew(void const *content, size_t content_size);
+Description Alloue (avec malloc(3)) et retourne un maillon “frais”. Les
+champs content et content_size du nouveau maillon sont
+initialisés par copie des paramètres de la fonction. Si le paramètre
+content est nul, le champs content est initialisé à
+NULL et le champs content_size est initialisé à 0 quelque
+soit la valeur du paramètre content_size. Le champ next
+est initialisé à NULL. Si l’allocation échoue, la fonction renvoie NULL.
+Param. #1 Le contenu à ajouter au nouveau maillon.
+Param. #2 La taille du contenu à ajouter au nouveau maillon.
+Retour Le nouveau maillon.
+Fonctions libc malloc(3)
+
+• ft_lstdelone
+Prototype void ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
+Description Prend en paramètre l’adresse d’un pointeur sur un maillon et
+libère la mémoire du contenu de ce maillon avec la fonction
+del passée en paramètre puis libère la mémoire du maillon
+en lui même avec free(3). La mémoire du champ next ne
+doit en aucun cas être libérée. Pour terminer, le pointeur sur
+le maillon maintenant libéré doit être mis à NULL (de manière
+similaire à la fonction ft_memdel de la partie obligatoire).
+Param. #1 L’adresse d’un pointeur sur le maillon à libérer.
+Retour Rien.
+Fonctions libc free(3)
+
+ • ft_lstdel
+Prototype void ft_lstdel(t_list **alst, void (*del)(void *,size_t));
+Description Prend en paramètre l’adresse d’un pointeur sur un maillon et
+libère la mémoire de ce maillon et celle de tous ses successeurs
+l’un après l’autre avec del et free(3). Pour terminer,
+le pointeur sur le premier maillon maintenant libéré doit être
+mis à NULL (de manière similaire à la fonction ft_memdel de
+la partie obligatoire).
+Param. #1 L’adresse d’un pointeur sur le premier maillon d’une liste à
+libérer.
+Retour Rien.
+Fonctions libc free(3)
+
+• ft_lstadd
+Prototype void ft_lstadd(t_list **alst, t_list *new);
+Description Ajoute l’élément new en tête de la liste.
+Param. #1 L’adresse d’un pointeur sur le premier maillon d’une liste.
+Param. #2 Le maillon à ajouter en tête de cette liste.
+Retour Rien.
+Fonctions libc Aucune.
+
+•ft_lstiter
+Prototype void ft_lstiter(t_list *lst, void (*f)(t_list
+*elem));
+Description Parcourt la liste lst en appliquant à chaque maillon la fonction f.
+Param. #1 Pointeur sur le premier maillon d’une liste.
+Param. #2 L’adresse d’une fonction à laquelle appliquer chaque maillon
+de la liste.
+Retour Rien.
+Fonctions libc Aucune.
+
+• ft_lstmap
+Prototype t_list * ft_lstmap(t_list *lst, t_list *
+(*f)(t_list *elem));
+Description Parcourt la liste lst en appliquant à chaque maillon la fonction
+f et crée une nouvelle liste “fraiche” avec malloc(3) ré-
+sultant des applications successives. Si une allocation échoue,
+la fonction renvoie NULL.
+Param. #1 Pointeur sur le premier maillon d’une liste.
+Param. #2 L’adresse d’une fonction à appliquer à chaque maillon de la
+liste pour crér une nouvelle liste.
+Retour La nouvelle liste.
+Fonctions libc malloc(3)
