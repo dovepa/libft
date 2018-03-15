@@ -6,7 +6,7 @@
 #    By: dpalombo <dpalombo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/14 10:40:54 by dpalombo          #+#    #+#              #
-#    Updated: 2018/03/15 15:26:19 by dpalombo         ###   ########.fr        #
+#    Updated: 2018/03/15 15:38:02 by dpalombo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ all: $(NAME)
 %.o: %.c
 	@$(CC) -c $? -o $@
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(MDEPS)
 	@ar rc $(NAME) $? $(OBJ)
 	@ranlib $(NAME)
 	@echo "ok lib"
@@ -63,4 +63,4 @@ fclean: clean
 
 re: fclean all
 
-.Phony = all clean fclean re
+.PHONY = all clean fclean re
