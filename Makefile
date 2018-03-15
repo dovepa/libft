@@ -6,7 +6,7 @@
 #    By: dpalombo <dpalombo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/14 10:40:54 by dpalombo          #+#    #+#              #
-#    Updated: 2017/12/07 17:00:33 by dpalombo         ###   ########.fr        #
+#    Updated: 2018/03/15 15:26:19 by dpalombo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,9 +37,14 @@ SRC=	ft_isspace.c	ft_memchr.c		ft_putnbr.c \
 		ft_putendl_fd.c	ft_strdup.c		ft_error.c \
 		ft_strerror.c	ft_usage.c		ft_recursive_factorial.c
 
+DEPS = libft.h
+MDEPS = $(DEPS:.h=.h)
+
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
+
+%.h: %.h
 
 %.o: %.c
 	@$(CC) -c $? -o $@

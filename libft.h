@@ -6,7 +6,7 @@
 /*   By: dpalombo <dpalombo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/12 00:10:54 by dpalombo          #+#    #+#             */
-/*   Updated: 2017/11/28 18:42:13 by dpalombo         ###   ########.fr       */
+/*   Updated: 2018/03/15 15:23:23 by dpalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
-# define MALLOC_CHECK(x) if (x == NULL) return (NULL);
 
 typedef	struct		s_list
 {

@@ -6,7 +6,7 @@
 /*   By: dpalombo <dpalombo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 14:39:08 by dpalombo          #+#    #+#             */
-/*   Updated: 2017/11/21 18:31:15 by dpalombo         ###   ########.fr       */
+/*   Updated: 2018/03/15 15:23:14 by dpalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,17 @@ char			**ft_strsplit(char const *s, char c)
 	if (s == NULL)
 		return (NULL);
 	nb_words = ft_count_words((char *)s, c);
-	MALLOC_CHECK((split = (char **)ft_memalloc((nb_words + 1) \
-	* sizeof(char *))));
+	if ((split = (char **)ft_memalloc((nb_words + 1) \
+	* sizeof(char *))) == NULL)
+		return (NULL);
 	i = 0;
 	while (nb_words--)
 	{
 		while (*s == c)
 			s++;
 		split[i] = ft_strsub((char *)s, 0, ft_word_len((char *)s, c));
-		MALLOC_CHECK(split[i++]);
+		if (split[i++] == NULL)
+			return (NULL);
 		s += ft_word_len((char *)s, c);
 	}
 	return (split);
