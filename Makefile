@@ -6,7 +6,7 @@
 #    By: dpalombo <dpalombo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/14 10:40:54 by dpalombo          #+#    #+#              #
-#    Updated: 2018/03/15 15:38:02 by dpalombo         ###   ########.fr        #
+#    Updated: 2018/05/07 12:33:56 by dpalombo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,8 @@ SRC=	ft_isspace.c	ft_memchr.c		ft_putnbr.c \
 		ft_putendl.c	ft_strdel.c		ft_strncmp.c \
 		ft_toupper.c	ft_isprint.c	ft_memccpy.c \
 		ft_putendl_fd.c	ft_strdup.c		ft_error.c \
-		ft_strerror.c	ft_usage.c		ft_recursive_factorial.c
+		ft_strerror.c	ft_usage.c		get_next_line.c \
+		ft_recursive_factorial.c
 
 DEPS = libft.h
 MDEPS = $(DEPS:.h=.h)

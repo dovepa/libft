@@ -6,12 +6,13 @@
 /*   By: dpalombo <dpalombo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/12 00:10:54 by dpalombo          #+#    #+#             */
-/*   Updated: 2018/03/15 15:23:23 by dpalombo         ###   ########.fr       */
+/*   Updated: 2018/05/07 12:32:14 by dpalombo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# define BUFF_SIZE 42
 
 # include <string.h>
 # include <stdlib.h>
@@ -24,6 +25,7 @@ typedef	struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+int					get_next_line(const int fd, char **line);
 void				*ft_memset(void *str, int remp, size_t len);
 void				ft_bzero(void *str, size_t len);
 void				*ft_memcpy(void *dest, const void *src, size_t len);
